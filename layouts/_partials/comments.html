@@ -1,0 +1,51 @@
+{{- /* giscus comments. Backed by GitHub Discussions on the site's own repo. */ -}}
+{{- /* Renders only once giscus.categoryId is set in hugo.yaml, so the site      */ -}}
+{{- /* stays clean until the GitHub-side setup is finished.                      */ -}}
+{{- with site.Params.giscus }}
+{{- if and .repo .repoId .categoryId }}
+<script src="https://giscus.app/client.js"
+        data-repo="{{ .repo }}"
+        data-repo-id="{{ .repoId }}"
+        {{- with .category }}
+        data-category="{{ . }}"
+        {{- end }}
+        data-category-id="{{ .categoryId }}"
+        data-mapping="{{ .mapping | default "pathname" }}"
+        data-strict="{{ .strict | default "0" }}"
+        data-reactions-enabled="{{ .reactionsEnabled | default "1" }}"
+        data-emit-metadata="{{ .emitMetadata | default "0" }}"
+        data-input-position="{{ .inputPosition | default "bottom" }}"
+        data-theme="preferred_color_scheme"
+        data-lang="{{ .lang | default "en" }}"
+        data-loading="{{ .loading | default "lazy" }}"
+        crossorigin="anonymous"
+        async>
+</script>
+
+{{- /* Keep giscus in step with PaperMod's light/dark toggle. PaperMod sets     */ -}}
+{{- /* data-theme on <html>, so watch that rather than the toggle button.      */ -}}
+<script>
+    (function () {
+        const light = {{ .themeLight | default "light" }};
+        const dark = {{ .themeDark | default "dark_dimmed" }};
+
+        function send(theme) {
+            const frame = document.querySelector("iframe.giscus-frame");
+            if (frame) {
+                frame.contentWindow.postMessage(
+                    { giscus: { setConfig: { theme: theme } } },
+                    "https://giscus.app"
+                );
+            }
+        }
+
+        new MutationObserver(function () {
+            send(document.documentElement.dataset.theme === "dark" ? dark : light);
+        }).observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ["data-theme"]
+        });
+    })();
+</script>
+{{- end }}
+{{- end }}

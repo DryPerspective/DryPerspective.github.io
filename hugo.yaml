@@ -1,4 +1,73 @@
 baseURL: https://DryPerspective.github.io/
-languageCode: en-gb
+locale: en-gb
 title: Substitution Failure
 theme: PaperMod
+enableRobotsTXT: true
+
+# Which sections count as "posts" for the homepage list and the archive.
+# Hugo guesses this when unset; being explicit avoids surprises later.
+mainSections:
+  - posts
+
+# Search needs the JSON index produced by the theme's layouts/index.json.
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+
+menu:
+  main:
+    - identifier: archive
+      name: Archive
+      url: /archives/
+      weight: 10
+    - identifier: search
+      name: Search
+      url: /search/
+      weight: 20
+    - identifier: about
+      name: About
+      url: /about/
+      weight: 30
+
+params:
+  author: "Matthew Taylor"
+  description: "Weird corners of C++, chased down until it's clear whether the fault is the compiler, the standard, or me."
+  comments: true
+  ShowCodeCopyButtons: true
+
+  # Site-wide Open Graph fallback, used when a page sets no cover image.
+  images: ["og-image.png"]
+
+  # Links each post to its source file on GitHub. Text is omitted so the
+  # theme's own label ("Edit") is used; set Text: "..." to change it.
+  editPost:
+    URL: "https://github.com/DryPerspective/DryPerspective.github.io/blob/main/content"
+    appendFilePath: true
+
+  socialIcons:
+    - name: github
+      url: "https://github.com/DryPerspective"
+    - name: rss
+      url: "/index.xml"
+    - name: linkedin
+      url: "https://www.linkedin.com/in/matthew-t-642631179/"
+
+  # Homepage intro: heading, blurb, then the social icons. Both markdown.
+  homeInfoParams:
+    Title: "Substitution Failure"
+    Content: "Weird quirks of C++, written up as I stumble across them."
+
+  giscus:
+    repo: "DryPerspective/DryPerspective.github.io"
+    repoId: "R_kgDOU6aELw"
+    category: "Comments"
+    categoryId: "DIC_kwDOU6aEL84DG9lB"
+    mapping: "pathname"
+    reactionsEnabled: "1"
+    inputPosition: "bottom"
+    lang: "en"
+    loading: "lazy"
+    themeLight: "light"
+    themeDark: "dark_dimmed"
