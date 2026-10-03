@@ -1,10 +1,10 @@
 ---
 date: '2026-10-01T19:50:26+01:00'
-title: "The complement of `true` is `true`, except when it's `false`"
+title: "The complement of true is true, except when it's false"
 ShowToc: true
 TocOpen: false
 tags: ["c++", "undefined-behaviour", "enums", "wg21"]
-summary: "Consequences of integral promotion, UB on unscoped enums, and why boolean conversion is surprising"
+summary: "Consequences of integral promotion, UB on unscoped enums, and why boolean conversion is surprising."
 ---
 
 I recently looked at [P4313R1](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2026/p4313r1.html), a standards proposal paper which adds a set of bitmask operations for enums, using a C++26 annotation to opt-in. The core idea being that, to use an example from the paper, given code like the below:
@@ -300,7 +300,7 @@ This is more concerning than some funky bit patterns, however. The valid range o
 | clang 19 / 20 / 21 | 0 | 0 | 1 | 0 | 1 | 0 | 0 |
 | clang 23.1.1 | 0 | 0 | 1 | 1 | 1 | 0 | 1 |
 
-Versions of Clang before 23 appear to simply perform `trunc(d) & 1`; meaning that after truncation, odd numbers are `true` and even numbers are `false`. Clang 23 performs `(trunc(d) mod 256) != 0`, narrowing to a byte first. So `256.0` becomes `FALSE` and `257.0` becomes `TRUE`. Optimised builds act as before - truncating then doing the proper boolean conversion.
+Versions of Clang before 23 appear to simply perform `trunc(d) & 1`; meaning that after truncation, odd numbers are `true` and even numbers are `false`. Clang 23 performs `(trunc(d) % 256) != 0`, narrowing to a byte first. So `256.0` becomes `FALSE` and `257.0` becomes `TRUE`. Optimised builds act as before - truncating then doing the proper boolean conversion.
 
 Ultimately this all comes to a rather absurd head. Consider the below code:
 ```cpp
