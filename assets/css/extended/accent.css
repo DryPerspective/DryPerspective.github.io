@@ -1,0 +1,46 @@
+/* Accent colours taken from the hexagon logo */
+:root {
+    --accent: #00599c;
+    --accent-strong: #004482;
+    --accent-soft: rgba(101, 154, 210, 0.15);
+}
+:root[data-theme="dark"] {
+    --accent: #659ad2;
+    --accent-strong: #8db6e2;
+    --accent-soft: rgba(101, 154, 210, 0.18);
+}
+
+/* Links in posts and the table of contents */
+.md-content a:not(.anchor),
+.toc a {
+    color: var(--accent);
+    text-decoration-color: var(--accent-soft);
+    text-decoration-thickness: 2px;
+}
+.md-content a:not(.anchor):hover,
+.toc a:hover {
+    color: var(--accent-strong);
+    text-decoration-color: currentColor;
+}
+
+/* The current page in the menu */
+.menu .active {
+    text-decoration-color: var(--accent);
+}
+
+/* Tag chips under each post */
+.post-tags a {
+    color: var(--accent);
+    background: var(--accent-soft);
+    border-color: transparent;
+}
+
+/* Blockquotes, such as the quoted standard wording */
+.md-content blockquote {
+    border-inline-start-color: var(--accent);
+}
+
+/* Text selection */
+::selection {
+    background: var(--accent-soft);
+}

@@ -1,0 +1,52 @@
+/* Keith beside the homepage intro. The selector beats the theme's
+   .first-entry column layout. */
+.first-entry.home-keith {
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+}
+.home-keith-text {
+    flex: 1;
+}
+.home-keith-img {
+    width: 45%;
+    max-width: 320px;
+    height: auto;
+}
+/* Stack on phones, with Keith under the intro */
+@media (max-width: 600px) {
+    .first-entry.home-keith {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .home-keith-img {
+        width: 70%;
+        align-self: center;
+    }
+}
+
+/* The 404 page: Keith, upside down and very dead */
+.keith-404 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 40px;
+}
+.keith-404 img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+}
+.keith-404 h1 {
+    font-size: 96px;
+    line-height: 1;
+    margin: 24px 0 12px;
+}
+.keith-404 p {
+    color: var(--secondary);
+    margin-bottom: 8px;
+}
+.keith-404 a {
+    color: var(--accent);
+}

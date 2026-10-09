@@ -32,6 +32,14 @@ menu:
       weight: 30
 
 params:
+  # The hexagon logo beside the site title. It lives in static/ rather than
+  # assets/ so the theme serves it as-is: it's pre-rendered at 3x (96px tall)
+  # to stay sharp on high-DPI screens, where the theme would shrink it to 1x.
+  # The full-size original is kept in assets/logo.webp.
+  label:
+    icon: logo-header.webp
+    iconHeight: 32
+
   author: "Matthew Taylor"
   description: "Weird corners of C++, chased down until it's clear whether the fault is the compiler, the standard, or me."
   comments: true
