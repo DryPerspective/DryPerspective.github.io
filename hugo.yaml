@@ -79,3 +79,9 @@ params:
     loading: "lazy"
     themeLight: "light"
     themeDark: "dark_dimmed"
+
+# Emit classes rather than inline styles, so assets/css/extended/chroma.css can
+# recolour individual tokens.
+markup:
+  highlight:
+    noClasses: false
