@@ -4,6 +4,7 @@ draft: false
 title: 'A Brief History of Metaprogramming'
 summary: "Five examples of how template metaprogramming has evolved from its discovery in (pre-)C++98 to C++26"
 tags: ["c++", "c++26", "templates", "metaprogramming", "sfinae", "constexpr", "reflection", "wg21"]
+ShowToc: true
 ---
 
 At a previous job of mine, our entire codebase and toolchain was exclusively written in C++98 using the classic, late-90s Borland compiler. And it's possible the company had good reason for this. In any case, this meant that I got fairly familiar with the shape of C++ template metaprogramming in its basest form, before the committee added features to take the edge off it. Since you need to be that much more familiar with the intricacies of how the template engine works in order to engineer the solution, it has always been an interesting walk through the black magic on which so much of the world is built.
